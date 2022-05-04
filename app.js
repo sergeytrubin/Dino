@@ -1,5 +1,20 @@
 
-    // Create Dino Constructor
+// Create Dino Constructor
+export default class DinoCompare {
+  constructor() {
+    this.form = document.querySelector("#dino-compare")
+    this.events()
+  }
+
+  // Events
+  events() {
+    this.form.addEventListener("click", () => {
+      alert("I am here!")
+    })
+  }
+
+
+}
 
 
     // Create Dino Objects
