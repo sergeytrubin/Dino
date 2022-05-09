@@ -1,47 +1,15 @@
+const express = require('express');
+const app = express();
 
-// Create Dino Constructor
-export default class DinoCompare {
-  constructor() {
-    this.form = document.querySelector("#dino-compare")
-    this.events()
-  }
+app.use(express.static('public'));
+app.set('views', 'views');
+app.set('view engine', 'ejs');
 
-  // Events
-  events() {
-    this.form.addEventListener("click", () => {
-      alert("I am here!")
-    })
-  }
+app.use(express.urlencoded({extended: false}));
 
+app.get('/', function(req, res) {
+  res.render('index');
+});
 
-}
+app.listen(3000);
 
-
-    // Create Dino Objects
-
-
-    // Create Human Object
-
-    // Use IIFE to get human data from form
-
-
-    // Create Dino Compare Method 1
-    // NOTE: Weight in JSON file is in lbs, height in inches. 
-
-    
-    // Create Dino Compare Method 2
-    // NOTE: Weight in JSON file is in lbs, height in inches.
-
-    
-    // Create Dino Compare Method 3
-    // NOTE: Weight in JSON file is in lbs, height in inches.
-
-
-    // Generate Tiles for each Dino in Array
-  
-        // Add tiles to DOM
-
-    // Remove form from screen
-
-
-// On button click, prepare and display infographic
