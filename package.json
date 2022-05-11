@@ -4,7 +4,7 @@
   "description": "Udacity: Intermediate JS ND",
   "main": "app.js",
   "scripts": {
-    "watch": "nodemon app",
+    "watch": "nodemon app --ignore frontend-js --ignore public/ & webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

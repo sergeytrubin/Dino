@@ -1,3 +1,9 @@
+/* Hide element*/
+.hide-dino-from {
+    display: none;
+}
+
+
 /* General Styles */
 body {
     background: rgb(111, 208, 224);

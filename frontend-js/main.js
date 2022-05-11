@@ -1,3 +1,3 @@
 import DinoCompare from "./modules/dino";
 
-new DinoCompare();
+if (document.querySelector("#dino-compare")) { new DinoCompare(); }
