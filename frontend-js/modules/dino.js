@@ -5,8 +5,6 @@ const dinoData = require('../../dino.json');
 export default class DinoCompare {
   // Select DOM elements , and keep track of any usefull data
   constructor() {
-    //this.injectHTML();
-    //this.allFields = document.querySelectorAll("#dino-compare .form-control");
     this.form = document.querySelector("#dino-compare");
     this.button = document.querySelector("#btn");
     this.name = document.getElementById('name');
@@ -14,8 +12,6 @@ export default class DinoCompare {
     this.inches = document.getElementById('inches');
     this.weight = document.getElementById('weight');
     this.diet = document.getElementById('diet');
-    this.height = parseInt(this.feet);
-    //this.human = new Human(req.body);
     this.events();
   }
 
@@ -30,14 +26,14 @@ export default class DinoCompare {
   // Methods
   
   buildGrid() {
+    let human = new Human(this.name.value, this.feet.value, this.inches.value, this.weight.value, this.diet.value)
     this.form.classList.add("hide-dino-from")
+    console.log(human)
     alert(`
-    ${this.name.value} ${typeof(this.name.value)}
-    ${this.feet.value} ${typeof(this.feet.value)}
-    ${this.inches.value} ${typeof(this.inches.value)}
-    ${this.weight.value} ${typeof(this.weight.value)}
-    ${this.diet.value} ${typeof(this.diet.value)}
-    ${parseInt(this.height)} ${typeof(this.height)}
+    ${human.name}
+    ${human.height} ${typeof(human.height)} 
+    ${human.weight} ${typeof(human.weight)} 
+    ${human.diet}
     `)
   }
 
