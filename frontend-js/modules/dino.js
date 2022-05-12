@@ -5,8 +5,8 @@ const dinoData = require('../../dino.json');
 export default class DinoCompare {
   // Select DOM elements , and keep track of any usefull data
   constructor() {
-    this.form = document.querySelector("#dino-compare");
-    this.button = document.querySelector("#btn");
+    this.form = document.querySelector('#dino-compare');
+    this.button = document.querySelector('#btn');
     this.name = document.getElementById('name');
     this.feet = document.getElementById('feet');
     this.inches = document.getElementById('inches');
