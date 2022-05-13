@@ -1,11 +1,24 @@
 const Human = require('../../models/Human');
-const dinoData = require('../../dino.json');
+const Dinosaurus = require('../../models/Dinosaurus');
+const dinoData = require('./dino.json');
+
+const dinosArray = [{
+  species: 'Pigeon',
+  weight: 0.5,
+  height: 9,
+  diet: 'herbavor',
+  where: 'World Wide',
+  when: 'Holocene',
+  fact: 'All birds are living dinosaurs.'
+}]
+
 
 // Create Dino Constructor
 export default class DinoCompare {
   // Select DOM elements , and keep track of any usefull data
   constructor() {
     this.form = document.querySelector('#dino-compare');
+    this.grid = document.querySelector('#grid');
     this.button = document.querySelector('#btn');
     this.name = document.getElementById('name');
     this.feet = document.getElementById('feet');
@@ -24,21 +37,43 @@ export default class DinoCompare {
   }
 
   // Methods
+  createRows(rows, cols) {
+    this.grid.style.setProperty('--grid-rows', rows);
+    this.grid.style.setProperty('--grid-cols', cols);
+    for(let i = 0; i < (rows * cols); i++) {
+      let cell = document.createElement("div");
+      cell.innerText = (i + 1);
+      this.grid.appendChild(cell).className = "grid-item";
+    }
+  }
   
   buildGrid() {
-    let human = new Human(this.name.value, this.feet.value, this.inches.value, this.weight.value, this.diet.value)
-    this.form.classList.add("hide-dino-from")
+    let human = new Human(
+      this.name.value,
+      this.feet.value, 
+      this.inches.value, 
+      this.weight.value, 
+      this.diet.value
+      )
+    
+    let dinosaurus = new Dinosaurus(dinoData.Dinos[1], human);
+    let nameFact = dinosaurus.compareNames(human.name);
     console.log(human)
     alert(`
     ${human.name}
     ${human.height} ${typeof(human.height)} 
     ${human.weight} ${typeof(human.weight)} 
     ${human.diet}
+    ${nameFact}
+    ${this.grid}
     `)
+    this.form.classList.add("hide-dino-from");
+    //this.grid.injectHTML()
+    this.createRows(3, 3)
   }
 
-  injectHTML() {
-    document.body.insertAdjacentHTML('beforeend', `<div>${this.name}</div>`);
+  injectHTML(el) {
+    el.insertAdjacentHTML('beforeend', `<div>${human.name}</div>`);
   }
 
 }

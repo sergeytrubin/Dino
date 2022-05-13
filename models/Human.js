@@ -9,4 +9,4 @@ let Human = function (name, feet, inches, weight, diet) {
 
 Human.prototype.calcHeight = (feet, inches) => 12 * feet + inches;
 
-module.exports = Human
+module.exports = Human;
