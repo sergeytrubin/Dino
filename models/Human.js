@@ -5,6 +5,7 @@ let Human = function (name, feet, inches, weight, diet) {
     this.height = this.calcHeight(this.feet, this.inches);
     this.weight = parseInt(weight);
     this.diet = diet;
+    this.image = "images/human.png";
 }
 
 Human.prototype.calcHeight = (feet, inches) => 12 * feet + inches;

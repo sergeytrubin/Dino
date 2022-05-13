@@ -1,5 +1,6 @@
 let  Dinosaurus = function (data) {
     this.data = data;
+    this.image = `images/${data.species.toLowerCase()}.png`;
 }
 
 Dinosaurus.prototype.compareNames = function(name) {

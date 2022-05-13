@@ -2,17 +2,6 @@ const Human = require('../../models/Human');
 const Dinosaurus = require('../../models/Dinosaurus');
 const dinoData = require('./dino.json');
 
-const dinosArray = [{
-  species: 'Pigeon',
-  weight: 0.5,
-  height: 9,
-  diet: 'herbavor',
-  where: 'World Wide',
-  when: 'Holocene',
-  fact: 'All birds are living dinosaurs.'
-}]
-
-
 // Create Dino Constructor
 export default class DinoCompare {
   // Select DOM elements , and keep track of any usefull data
@@ -37,13 +26,55 @@ export default class DinoCompare {
   }
 
   // Methods
-  createRows(rows, cols) {
+
+  createRows(rows, cols, humanObj) {
+    // generating random dino array
+    let shuffledArray = shuffle(dinoData.Dinos);
+
+    // counter for dino objects in array
+    let dinoCount = 0;
+
+    console.log(shuffledArray)
     this.grid.style.setProperty('--grid-rows', rows);
     this.grid.style.setProperty('--grid-cols', cols);
+
     for(let i = 0; i < (rows * cols); i++) {
+      // Create grid elements
       let cell = document.createElement("div");
-      cell.innerText = (i + 1);
+      let cellSpecies = document.createElement("h3");
+      let cellImage = document.createElement("img");
+      let cellFact = document.createElement("h2");
       this.grid.appendChild(cell).className = "grid-item";
+
+      if (i != 4) {
+        // initialize new dino object
+        let dinosaurus = new Dinosaurus(shuffledArray[dinoCount], humanObj);
+
+        // Add dino species
+        cell.appendChild(cellSpecies).innerText = dinosaurus.data.species;
+
+        // Add image
+        cellImage.setAttribute("src", dinosaurus.image);
+        cellImage.setAttribute("alt", "Flower");
+        cell.appendChild(cellImage);     
+        this.grid.appendChild(cell);
+
+        // Add fact
+        
+        cell.appendChild(cellFact).innerText = "Fact place-holder ver very very very long";
+
+        //increase the dino counter by one
+        dinoCount++;
+
+      } else {
+        let humanName = document.createElement("h3");
+        cell.appendChild(humanName).innerText = humanObj.name;
+        cellImage.setAttribute("src", humanObj.image);
+        cellImage.setAttribute("alt", "Flower");
+        cell.appendChild(cellImage);    
+        this.grid.appendChild(cell);
+      }
+      
     }
   }
   
@@ -55,29 +86,24 @@ export default class DinoCompare {
       this.weight.value, 
       this.diet.value
       )
-    
-    let dinosaurus = new Dinosaurus(dinoData.Dinos[1], human);
-    let nameFact = dinosaurus.compareNames(human.name);
-    console.log(human)
-    alert(`
-    ${human.name}
-    ${human.height} ${typeof(human.height)} 
-    ${human.weight} ${typeof(human.weight)} 
-    ${human.diet}
-    ${nameFact}
-    ${this.grid}
-    `)
     this.form.classList.add("hide-dino-from");
-    //this.grid.injectHTML()
-    this.createRows(3, 3)
-  }
-
-  injectHTML(el) {
-    el.insertAdjacentHTML('beforeend', `<div>${human.name}</div>`);
+    this.createRows(3, 3, human)
   }
 
 }
 
+// Fisher–Yates random array shuffle
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function addImage(obj) {
+  
+}
 
     // Create Dino Objects
 
