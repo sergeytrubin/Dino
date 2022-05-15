@@ -34,7 +34,6 @@ export default class DinoCompare {
     // counter for dino objects in array
     let dinoCount = 0;
 
-    console.log(shuffledArray)
     this.grid.style.setProperty('--grid-rows', rows);
     this.grid.style.setProperty('--grid-cols', cols);
 
@@ -43,7 +42,7 @@ export default class DinoCompare {
       let cell = document.createElement("div");
       let cellSpecies = document.createElement("h3");
       let cellImage = document.createElement("img");
-      let cellFact = document.createElement("h2");
+      let cellFact = document.createElement("h3");
       this.grid.appendChild(cell).className = "grid-item";
 
       if (i != 4) {
@@ -60,8 +59,12 @@ export default class DinoCompare {
         this.grid.appendChild(cell);
 
         // Add fact
-        
-        cell.appendChild(cellFact).innerText = "Fact place-holder ver very very very long";
+        if (dinosaurus.data.species === "Pigeon") {
+          cell.appendChild(cellFact).innerText = "All birds are living dinosaurs.";
+        } else {
+          console.log(dinosaurus.getFact(humanObj))
+          cell.appendChild(cellFact).innerText = getRandomFact(dinosaurus.getFact(humanObj));
+        }       
 
         //increase the dino counter by one
         dinoCount++;
@@ -100,36 +103,8 @@ function shuffle(array) {
   }
   return array;
 }
-
-function addImage(obj) {
-  
+ 
+function getRandomFact(facts) {
+  shuffle(facts);
+  return facts[0];
 }
-
-    // Create Dino Objects
-
-
-    // Create Human Object
-
-    // Use IIFE to get human data from form
-
-
-    // Create Dino Compare Method 1
-    // NOTE: Weight in JSON file is in lbs, height in inches. 
-
-    
-    // Create Dino Compare Method 2
-    // NOTE: Weight in JSON file is in lbs, height in inches.
-
-    
-    // Create Dino Compare Method 3
-    // NOTE: Weight in JSON file is in lbs, height in inches.
-
-
-    // Generate Tiles for each Dino in Array
-  
-        // Add tiles to DOM
-
-    // Remove form from screen
-
-
-// On button click, prepare and display infographic
