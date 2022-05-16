@@ -1,3 +1,4 @@
+// Human object
 let Human = function (name, feet, inches, weight, diet) {
     this.name = name;
     this.feet = parseInt(feet);
@@ -8,6 +9,7 @@ let Human = function (name, feet, inches, weight, diet) {
     this.image = "images/human.png";
 }
 
+// Calculating the total human height 
 Human.prototype.calcHeight = (feet, inches) => 12 * feet + inches;
 
 module.exports = Human;

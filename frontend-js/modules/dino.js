@@ -26,7 +26,6 @@ export default class DinoCompare {
   }
 
   // Methods
-
   createRows(rows, cols, humanObj) {
     // generating random dino array
     let shuffledArray = shuffle(dinoData.Dinos);
@@ -34,11 +33,12 @@ export default class DinoCompare {
     // counter for dino objects in array
     let dinoCount = 0;
 
+    // Grid style
     this.grid.style.setProperty('--grid-rows', rows);
     this.grid.style.setProperty('--grid-cols', cols);
 
+    // Create grid elements
     for(let i = 0; i < (rows * cols); i++) {
-      // Create grid elements
       let cell = document.createElement("div");
       let cellSpecies = document.createElement("h3");
       let cellImage = document.createElement("img");
@@ -62,13 +62,13 @@ export default class DinoCompare {
         if (dinosaurus.data.species === "Pigeon") {
           cell.appendChild(cellFact).innerText = "All birds are living dinosaurs.";
         } else {
-          console.log(dinosaurus.getFact(humanObj))
           cell.appendChild(cellFact).innerText = getRandomFact(dinosaurus.getFact(humanObj));
         }       
 
         //increase the dino counter by one
         dinoCount++;
-
+      
+      // Add human tile
       } else {
         let humanName = document.createElement("h3");
         cell.appendChild(humanName).innerText = humanObj.name;
@@ -82,6 +82,7 @@ export default class DinoCompare {
   }
   
   buildGrid() {
+    // initialize new human object and storinh the user input
     let human = new Human(
       this.name.value,
       this.feet.value, 
@@ -89,10 +90,13 @@ export default class DinoCompare {
       this.weight.value, 
       this.diet.value
       )
-    this.form.classList.add("hide-dino-from");
-    this.createRows(3, 3, human)
-  }
 
+    // hide the form
+    this.form.classList.add("hide-dino-from");
+
+    // Create grid
+    this.createRows(3, 3, human);
+  }
 }
 
 // Fisher–Yates random array shuffle
@@ -103,7 +107,8 @@ function shuffle(array) {
   }
   return array;
 }
- 
+
+// random fact
 function getRandomFact(facts) {
   shuffle(facts);
   return facts[0];
