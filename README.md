@@ -10,11 +10,11 @@ NodeJS
 git clone https://github.com/sergeytrubin/Dino.git
 ```
 
-2. Move to Dino directory:
+2. Move to the Dino directory:
 ```shell
 cd Dino
 ```
-3.  In terminal inside Dino folder run:
+3.  In the terminal insidethe  Dino folder run:
 
 ```shell
 npm install
@@ -24,11 +24,11 @@ npm install
 ```shell
 npm run watch
 ```
-# Connect to application
+# Connect to the application in web browser
 ```shell
 http://localhost:3000
 ```
-In case using localhost it is not possible to connect to teh appliaction in teh web browser use the IP addres of the host
+In case using localhost, it is not possible to connect to the application in the web browser use the IP address of the host
 ```shell
 http://IP_ADDRESS:3000
 ```
