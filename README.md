@@ -14,7 +14,7 @@ git clone https://github.com/sergeytrubin/Dino.git
 ```shell
 cd Dino
 ```
-3.  In the terminal insidethe  Dino folder run:
+3.  In the terminal inside the  Dino folder run:
 
 ```shell
 npm install
